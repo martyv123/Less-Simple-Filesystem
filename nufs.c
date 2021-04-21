@@ -123,7 +123,8 @@ nufs_rename(const char *from, const char *to)
 int
 nufs_chmod(const char *path, mode_t mode)
 {
-    int rv = -1;
+    nufs_rmdir(path);
+    int rv = storage_mknod(path, mode);
     printf("chmod(%s, %04o) -> %d\n", path, mode, rv);
     return rv;
 }
@@ -179,8 +180,8 @@ nufs_utimens(const char* path, const struct timespec ts[2])
 int
 nufs_ioctl(const char* path, int cmd, void* arg, struct fuse_file_info* fi,
            unsigned int flags, void* data)
-{
-    int rv = -1;
+{   
+    int rv = ioctl(0, cmd, arg);
     printf("ioctl(%s, %d, ...) -> %d\n", path, cmd, rv);
     return rv;
 }
