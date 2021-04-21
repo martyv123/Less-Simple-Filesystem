@@ -181,6 +181,8 @@ int
 nufs_ioctl(const char* path, int cmd, void* arg, struct fuse_file_info* fi,
            unsigned int flags, void* data)
 {   
+    //learned about ioctl from man ioctl
+    // could not figure out how to get fd
     int rv = ioctl(0, cmd, arg);
     printf("ioctl(%s, %d, ...) -> %d\n", path, cmd, rv);
     return rv;
