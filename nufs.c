@@ -15,6 +15,7 @@
 #include "slist.h"
 #include "util.h"
 
+
 // implementation for: man 2 access
 // Checks if a file exists.
 int
@@ -98,6 +99,7 @@ nufs_link(const char *from, const char *to)
 {
     int rv = -1;
     printf("link(%s => %s) -> %d\n", from, to, rv);
+    storage_link(from, to);
 	return rv;
 }
 
